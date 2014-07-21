@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    script.
+        function playVideo(url){
+            var stage = document.getElementById('stage');
+            stage.innerHTML = '';
+
+            var el = document.createElement('video');
+            el.controls = true;
+            el.src = url;
+
+            stage.appendChild(el);
+        }
+
+    h1 Streamlet
+    p Welcome to Streamlet, a quick file server
+
+    p= files
+
+    ul
+    each file, index in files
+        li
+            a(onclick="playVideo('media/#{index}')")= file
+
+    div#stage
+
